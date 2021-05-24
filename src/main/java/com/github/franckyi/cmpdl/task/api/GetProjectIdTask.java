@@ -21,7 +21,7 @@ public class GetProjectIdTask extends TaskBase<Integer> {
 
     @Override
     protected Integer call0() {
-        updateTitle(String.format("Getting project ID for %s", projectUrl));
+        updateTitle(String.format("Obtendo o ID do projeto %s", projectUrl));
         try {
             URL url = new URL(projectUrl);
             Document doc = Jsoup.parse(url, 10000);
@@ -32,11 +32,11 @@ public class GetProjectIdTask extends TaskBase<Integer> {
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Malformed URL", ButtonType.OK).show());
+            Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "URL inválido", ButtonType.OK).show());
             return null;
         } catch (IOException e) {
             e.printStackTrace();
-            Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Connection error", ButtonType.OK).show());
+            Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Erro de conexão", ButtonType.OK).show());
             return null;
         }
     }

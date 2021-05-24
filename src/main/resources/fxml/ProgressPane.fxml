@@ -37,7 +37,7 @@
         </VBox>
     </expandableContent>
     <header>
-        <Label alignment="CENTER" text="Step 4/4 : Downloading...">
+        <Label alignment="CENTER" text="Step 4/4 : Baixando...">
             <font>
                 <Font size="18.0"/>
             </font>

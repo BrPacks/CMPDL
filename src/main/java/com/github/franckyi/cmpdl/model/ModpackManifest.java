@@ -61,7 +61,7 @@ public class ModpackManifest {
 
     @Override
     public String toString() {
-        return String.format("### %s v%s by %s for MC %s\n### Mod count : %d\n### Forge version required : %s",
+        return String.format("### %s v%s por %s para MC %s\n### Mods : %d\n### Versão do Forge : %s",
                 getName().replaceAll("%", ""), getVersion().replaceAll("%", ""),
                 getAuthor().replaceAll("%", ""), getMcVersion(), mods.size(), getForge());
     }

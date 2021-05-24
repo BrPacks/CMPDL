@@ -65,7 +65,7 @@ public class ModpackPaneController implements Initializable, IContentController 
     @Override
     public void handleNext() {
         if (modpack.getSelectedToggle() == urlButton) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Parsing project ID...", ButtonType.CLOSE);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Analisando ID do projeto...", ButtonType.CLOSE);
             alert.show();
             GetProjectIdTask task = new GetProjectIdTask(urlField.getText());
             task.setOnSucceeded(event -> {
@@ -79,7 +79,7 @@ public class ModpackPaneController implements Initializable, IContentController 
                 projectId = Integer.parseInt(idField.getText());
             } catch (NumberFormatException e) {
                 e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, "The project ID must be an integer", ButtonType.OK).show();
+                new Alert(Alert.AlertType.ERROR, "O ID do projeto deve ser um número", ButtonType.OK).show();
             }
             handleNext(projectId);
         }
@@ -108,9 +108,9 @@ public class ModpackPaneController implements Initializable, IContentController 
     }
 
     public void handleNext(int addonId) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Loading project data...", ButtonType.CLOSE);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Carregando projeto...", ButtonType.CLOSE);
         alert.show();
-        CallTask<Addon> task = new CallTask<>(String.format("Getting project data for project %d", addonId), CMPDL.getAPI().getAddon(addonId));
+        CallTask<Addon> task = new CallTask<>(String.format("Obtendo dados do projeto para o projeto %d", addonId), CMPDL.getAPI().getAddon(addonId));
         task.setOnSucceeded(event -> Platform.runLater(() -> task.getValue().ifPresent(addon -> {
             if (addon.getCategorySection().getName().equals("Modpacks")) {
                 CMPDL.mainWindow.getController().getStartButton().disableProperty().unbind();
@@ -121,7 +121,7 @@ public class ModpackPaneController implements Initializable, IContentController 
                 alert.hide();
             } else {
                 alert.hide();
-                new Alert(Alert.AlertType.ERROR, "The addon isn't a modpack !", ButtonType.OK).show();
+                new Alert(Alert.AlertType.ERROR, "O addon não é um modpack!", ButtonType.OK).show();
             }
         })));
         CMPDL.EXECUTOR_SERVICE.execute(task);
@@ -130,7 +130,7 @@ public class ModpackPaneController implements Initializable, IContentController 
     @FXML
     void actionChooseSource(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        fc.setTitle("Choose the modpack file :");
+        fc.setTitle("Escolha o arquivo do modpack :");
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Modpack archive", "*.zip"));
         File src = fc.showOpenDialog(CMPDL.stage);
         if (src != null) {
@@ -141,7 +141,7 @@ public class ModpackPaneController implements Initializable, IContentController 
     @FXML
     void actionChooseDestination(ActionEvent event) {
         DirectoryChooser dc = new DirectoryChooser();
-        dc.setTitle("Choose the destination folder :");
+        dc.setTitle("Escolha a pasta de destino :");
         File dst = dc.showDialog(CMPDL.stage);
         if (dst != null) {
             destinationField.setText(dst.getAbsolutePath());

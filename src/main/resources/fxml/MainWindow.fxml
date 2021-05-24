@@ -10,22 +10,22 @@
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
-    <Label onMouseClicked="#switchTheme" text="CMPDL">
+    <Label onMouseClicked="#switchTheme" text="BrPacks">
         <font>
             <Font name="System Bold" size="24.0"/>
         </font>
     </Label>
     <AnchorPane fx:id="contentPane"/>
     <HBox alignment="CENTER" spacing="10.0">
-        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#actionClose" text="Close">
+        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#actionClose" text="Fechar">
             <HBox.margin>
                 <Insets right="20.0"/>
             </HBox.margin>
         </Button>
         <Button fx:id="previousButton" disable="true" mnemonicParsing="false" onAction="#actionPrevious"
-                text="Previous"/>
-        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#actionNext" text="Next"/>
-        <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#actionStart" text="Start">
+                text="Anterior"/>
+        <Button fx:id="nextButton" mnemonicParsing="false" onAction="#actionNext" text="Próximo"/>
+        <Button fx:id="startButton" disable="true" mnemonicParsing="false" onAction="#actionStart" text="Começar">
             <HBox.margin>
                 <Insets left="20.0"/>
             </HBox.margin>

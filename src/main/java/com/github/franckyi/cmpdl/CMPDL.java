@@ -78,12 +78,12 @@ public class CMPDL extends Application {
                 try {
                     Desktop.getDesktop().browse(new URI(url));
                 } catch (IOException | URISyntaxException e) {
-                    Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Can't open URL", ButtonType.OK).show());
+                    Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Não foi possível abrir o URL", ButtonType.OK).show());
                     e.printStackTrace();
                 }
             });
         } else {
-            new Alert(Alert.AlertType.ERROR, "Desktop not supported", ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "Área de trabalho não suportada", ButtonType.OK).show();
         }
     }
 }

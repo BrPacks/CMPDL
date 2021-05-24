@@ -74,7 +74,7 @@ public class ProgressPaneController implements Initializable, IContentController
     @Override
     public void handleClose() {
         if (!done) {
-            Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel the modpack download ?", ButtonType.YES, ButtonType.NO).showAndWait();
+            Optional<ButtonType> buttonType = new Alert(Alert.AlertType.CONFIRMATION, "Você tem certeza que deseja cancelar o download do seu modpack?", ButtonType.YES, ButtonType.NO).showAndWait();
             if (buttonType.orElse(null) == ButtonType.YES) {
                 if (task2 != null) task2.cancel();
                 if (task1 != null) task1.cancel();
@@ -154,10 +154,10 @@ public class ProgressPaneController implements Initializable, IContentController
     }
 
     private void downloadModpack() {
-        log("Downloading modpack");
+        log("Baixando modpack");
         DownloadFileTask task = new DownloadFileTask(addonFile.getDownloadUrl(), new File(temp, addonFile.getFileName()));
         task.setOnSucceeded(e -> {
-            log("Modpack downloaded successfully");
+            log("Modpack baixado com sucesso");
             unzipModpack();
         });
         setTask1(task);
@@ -165,10 +165,10 @@ public class ProgressPaneController implements Initializable, IContentController
     }
 
     public void unzipModpack() {
-        log("Unzipping modpack");
+        log("Descompactando modpack");
         UnzipFileTask task = new UnzipFileTask(zipFile, unzipFolder);
         task.setOnSucceeded(e -> {
-            log("Modpack unzipped successfully");
+            log("Modpack descompactado com sucesso");
             readManifest();
         });
         setTask1(task);
@@ -190,10 +190,10 @@ public class ProgressPaneController implements Initializable, IContentController
     }
 
     private void downloadMods() {
-        log("Downloading mods");
+        log("Baixando mods");
         DownloadModsTask task = new DownloadModsTask(modsFolder, progressFile, manifest.getMods());
         task.setOnSucceeded(e -> {
-            log("Downloaded mods successfully");
+            log("Mods baixados com sucesso");
             copyOverrides();
         });
         setTask1(task);
@@ -205,10 +205,10 @@ public class ProgressPaneController implements Initializable, IContentController
 
     private void copyOverrides() {
         setTask2(null);
-        log("Copying overrides");
+        log("Copiando sobreposições");
         CopyOverridesTask task = new CopyOverridesTask(new File(unzipFolder, manifest.getOverrides()), minecraft);
         task.setOnSucceeded(e -> {
-            log("Copied overrides successfully");
+            log("Sobreposições copiadas com sucesso");
             clean();
         });
         setTask1(task);
@@ -216,7 +216,7 @@ public class ProgressPaneController implements Initializable, IContentController
     }
 
     private void clean() {
-        log("Cleaning");
+        log("Limpando");
         CleanTask task = new CleanTask(temp);
         task.setOnSucceeded(e -> finish());
         setTask1(task);
@@ -226,11 +226,11 @@ public class ProgressPaneController implements Initializable, IContentController
     private void finish() {
         done = true;
         setTask1(null);
-        subLabel1.setText("!!! Modpack imported successfully !!!");
-        subLabel2.setText(String.format("Make sure to install %s before playing.", manifest.getForge()));
-        log("Cleaned successfully");
-        log("!!! Modpack imported successfully !!!");
-        log("Make sure to install %s before playing.", manifest.getForge());
+        subLabel1.setText("!!! Modpack importado com sucesso !!!");
+        subLabel2.setText(String.format("Tenha certeza que tem instalado %s antes de jogar.", manifest.getForge()));
+        log("Limpo com sucesso");
+        log("!!! Modpack importado com sucesso !!!");
+        log("Tenha certeza que tem instalado %s antes de jogar.", manifest.getForge());
     }
 
 }

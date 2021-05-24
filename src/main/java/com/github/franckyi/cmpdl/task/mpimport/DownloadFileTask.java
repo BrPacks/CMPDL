@@ -23,7 +23,7 @@ public class DownloadFileTask extends TaskBase<Void> {
 
     @Override
     protected Void call0() throws IOException, URISyntaxException {
-        updateTitle(String.format("Downloading %s", dst.getName()));
+        updateTitle(String.format("Baixando %s", dst.getName()));
         URL url = new URL(src);
         URI uri = new URI(url.getProtocol(), url.getHost(), url.getFile(), null);
         if (!dst.exists()) dst.createNewFile();

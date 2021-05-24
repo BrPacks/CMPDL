@@ -20,7 +20,7 @@ public class CopyOverridesTask extends TaskBase<Void> {
 
     @Override
     protected Void call0() throws IOException {
-        updateTitle("Copying overrides");
+        updateTitle("Copiando sobreposições");
         copyFolder(srcFolder, dstFolder, StandardCopyOption.REPLACE_EXISTING);
         return null;
     }

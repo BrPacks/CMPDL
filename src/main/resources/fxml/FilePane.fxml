@@ -8,7 +8,7 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.github.franckyi.cmpdl.controller.FilePaneController">
-    <Label text="Step 2/4 : Choose a file">
+    <Label text="Passo 2/4 : Escolha um arquivo">
         <font>
             <Font size="18.0"/>
         </font>
@@ -25,23 +25,23 @@
                     <Font size="18.0"/>
                 </font>
             </Label>
-            <Label fx:id="authorLabel" text="by Author">
+            <Label fx:id="authorLabel" text="por Author">
                 <font>
                     <Font size="14.0"/>
                 </font>
             </Label>
             <Label fx:id="summaryLabel" maxWidth="600.0" minWidth="200.0" prefWidth="600.0" text="Summary"
                    textOverrun="WORD_ELLIPSIS" wrapText="true"/>
-            <Hyperlink onAction="#actionViewInBrowser" text="View in browser"/>
+            <Hyperlink onAction="#actionViewInBrowser" text="Abrir no navegador"/>
         </VBox>
         <VBox alignment="CENTER" spacing="5.0">
             <ImageView fx:id="categoryImageView" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
                        preserveRatio="true"/>
-            <Label fx:id="categoryLabel" text="Category"/>
+            <Label fx:id="categoryLabel" text="Categoria"/>
         </VBox>
     </HBox>
     <HBox alignment="CENTER_LEFT" spacing="10.0">
-        <RadioButton fx:id="idButton" mnemonicParsing="false" text="From file ID :">
+        <RadioButton fx:id="idButton" mnemonicParsing="false" text="Do ID do arquivo :">
             <toggleGroup>
                 <ToggleGroup fx:id="file"/>
             </toggleGroup>
@@ -49,7 +49,7 @@
         <TextField fx:id="idField" disable="true" maxWidth="100.0"/>
     </HBox>
     <VBox spacing="5.0">
-        <RadioButton fx:id="directButton" mnemonicParsing="false" selected="true" text="Direct :"
+        <RadioButton fx:id="directButton" mnemonicParsing="false" selected="true" text="Direto :"
                      toggleGroup="$file"/>
         <VBox fx:id="directPane" alignment="CENTER" spacing="5.0">
             <ListView fx:id="filesListView"/>

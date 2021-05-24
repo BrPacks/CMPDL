@@ -18,7 +18,7 @@ public class UnzipFileTask extends TaskBase<Void> {
 
     @Override
     protected Void call0() throws Throwable {
-        updateTitle(String.format("Unzipping %s", src.getName()));
+        updateTitle(String.format("Descompactando %s", src.getName()));
         FileInputStream is = new FileInputStream(src.getCanonicalFile());
         FileChannel channel = is.getChannel();
         ZipEntry ze;

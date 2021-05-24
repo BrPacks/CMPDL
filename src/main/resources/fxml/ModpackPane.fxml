@@ -6,7 +6,7 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
       spacing="10.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.github.franckyi.cmpdl.controller.ModpackPaneController">
-    <Label text="Step 1/4 : Choose a modpack">
+    <Label text="Passo 1/4 : Escolha o modpack">
         <font>
             <Font size="18.0"/>
         </font>
@@ -26,26 +26,26 @@
         <TextField fx:id="urlField" minWidth="400.0" GridPane.columnIndex="2"/>
         <TextField fx:id="idField" disable="true" maxWidth="100.0" GridPane.columnIndex="2"
                    GridPane.rowIndex="1"/>
-        <RadioButton fx:id="urlButton" mnemonicParsing="false" selected="true" text="From URL :"
+        <RadioButton fx:id="urlButton" mnemonicParsing="false" selected="true" text="Pelo URL :"
                      GridPane.columnIndex="1">
             <toggleGroup>
                 <ToggleGroup fx:id="modpack"/>
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="idButton" mnemonicParsing="false" text="From project ID :" toggleGroup="$modpack"
+        <RadioButton fx:id="idButton" mnemonicParsing="false" text="Do ID de projeto :" toggleGroup="$modpack"
                      GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <RadioButton fx:id="zipButton" mnemonicParsing="false" text="From ZIP file :" toggleGroup="$modpack"
+        <RadioButton fx:id="zipButton" mnemonicParsing="false" text="Do arquivo ZIP :" toggleGroup="$modpack"
                      GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <TextField fx:id="zipField" prefWidth="300.0"/>
             <Button fx:id="chooseSourceButton" mnemonicParsing="false" onAction="#actionChooseSource"
-                    text="Choose..."/>
+                    text="Selecione..."/>
         </HBox>
-        <Label text="Destination :" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <Label text="Pasta destino :" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
         <HBox alignment="CENTER_LEFT" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <TextField fx:id="destinationField" prefWidth="300.0"/>
             <Button fx:id="chooseDestinationButton" mnemonicParsing="false"
-                    onAction="#actionChooseDestination" text="Choose..."/>
+                    onAction="#actionChooseDestination" text="Selecione..."/>
         </HBox>
     </GridPane>
 </VBox>

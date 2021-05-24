@@ -36,7 +36,7 @@ public class DownloadModsTask extends TaskBase<Void> {
             while ((line = reader.readLine()) != null && !isCancelled()) {
                 ModpackManifest.ModpackManifestMod mod = new ModpackManifest.ModpackManifestMod(line);
                 mods.remove(mod);
-                CMPDL.progressPane.getController().log("File %d:%d already downloaded - skipping", mod.getProjectId(), mod.getFileId());
+                CMPDL.progressPane.getController().log("Arquivo %d:%d já baixado - Pulando", mod.getProjectId(), mod.getFileId());
                 start++;
             }
             reader.close();
@@ -50,14 +50,14 @@ public class DownloadModsTask extends TaskBase<Void> {
                     writer.close();
                     return null;
                 }
-                updateTitle(String.format("Downloading mods (%d/%d)", i + 1, max));
+                updateTitle(String.format("Baixando mods (%d/%d)", i + 1, max));
                 ModpackManifest.ModpackManifestMod mod = mods.get(i - start);
-                CMPDL.progressPane.getController().log("Resolving file %d:%d", mod.getProjectId(), mod.getFileId());
+                CMPDL.progressPane.getController().log("Corrigindo arquivos %d:%d", mod.getProjectId(), mod.getFileId());
                 AddonFile file = CMPDL.getAPI().getFile(mod.getProjectId(), mod.getFileId()).execute().body();
                 if (file != null) {
                     DownloadFileTask task = new DownloadFileTask(file.getDownloadUrl(), new File(modsFolder, file.getFileName()));
                     setTask(task);
-                    CMPDL.progressPane.getController().log("Downloading file %s", file.getFileName().replaceAll("%", ""));
+                    CMPDL.progressPane.getController().log("Baixando arquvio %s", file.getFileName().replaceAll("%", ""));
                     task.setOnSucceeded(e -> {
                         try {
                             writer.write(String.format("%d:%d\n", mod.getProjectId(), mod.getFileId()));
@@ -67,7 +67,7 @@ public class DownloadModsTask extends TaskBase<Void> {
                     });
                     task.run();
                 } else {
-                    CMPDL.progressPane.getController().log("!!! Unknown file %d:%d - skipping !!!", mod.getProjectId(), mod.getFileId());
+                    CMPDL.progressPane.getController().log("!!! Arquivo desconhecido %d:%d - Pulando !!!", mod.getProjectId(), mod.getFileId());
                 }
             }
         }

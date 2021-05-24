@@ -64,7 +64,7 @@ public class DestinationPaneController implements Initializable, IContentControl
     @FXML
     void actionChooseDestination(ActionEvent event) {
         DirectoryChooser dc = new DirectoryChooser();
-        dc.setTitle("Choose the destination folder :");
+        dc.setTitle("Escolha a pasta de destino :");
         String currentChosenDirectory = destinationField.getText();
         if (currentChosenDirectory != null && ! "".equals(currentChosenDirectory)) {
             dc.setInitialDirectory(new File(currentChosenDirectory));
@@ -106,7 +106,7 @@ public class DestinationPaneController implements Initializable, IContentControl
                 dst.mkdirs();
             }
             if (!dst.canWrite()) {
-                new Alert(Alert.AlertType.ERROR, "Permission denied. Please choose another destination folder.", ButtonType.OK).show();
+                new Alert(Alert.AlertType.ERROR, "Permissão negada. Escolha outra pasta de destino.", ButtonType.OK).show();
             } else {
                 CMPDL.progressPane.getController().setData(addonFile, dst);
                 CMPDL.mainWindow.getController().setContent(CMPDL.progressPane);
@@ -115,7 +115,7 @@ public class DestinationPaneController implements Initializable, IContentControl
                 CMPDL.progressPane.getController().start();
             }
         } else {
-            new Alert(Alert.AlertType.ERROR, "The destination must be a folder.", ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "O destino deve ser uma pasta.", ButtonType.OK).show();
         }
     }
 
@@ -127,7 +127,7 @@ public class DestinationPaneController implements Initializable, IContentControl
             .findFirst()
             .ifPresent(a -> logoImageView.setImage(new Image(a.getThumbnailUrl())));
         titleLabel.setText(addon.getName());
-        authorLabel.setText("by " + addon.getAuthors().get(0).getName());
+        authorLabel.setText("por " + addon.getAuthors().get(0).getName());
         summaryLabel.setText(addon.getSummary());
         addon.getCategories().stream()
             .filter(category -> category.getCategoryId() == addon.getPrimaryCategoryId())

@@ -82,14 +82,14 @@ public class FilePaneController implements Initializable, IContentController {
     private void viewAllFiles() {
         if (files != null) {
             filesListView.getItems().setAll(files);
-            changeViewButton.setText("View latest files...");
+            changeViewButton.setText("Ver arquivos mais recentes...");
             changeViewButton.setOnAction(e -> viewLatestFiles());
         }
     }
 
     public void viewLatestFiles() {
         filesListView.getItems().setAll(addon.getLatestFiles());
-        changeViewButton.setText("View all files...");
+        changeViewButton.setText("Ver todos arquivos...");
         changeViewButton.setOnAction(e -> viewAllFiles());
     }
 
@@ -117,7 +117,7 @@ public class FilePaneController implements Initializable, IContentController {
             });
         CMPDL.mainWindow.getController().getNextButton().setDisable(true);
         CMPDL.mainWindow.getController().getPreviousButton().setDisable(false);
-        CallTask<List<AddonFile>> task = new CallTask<>(String.format("Getting addon files for addon %d", addon.getId()), CMPDL.getAPI().getAddonFiles(addon.getId()));
+        CallTask<List<AddonFile>> task = new CallTask<>(String.format("Obtendo addons do addon %d", addon.getId()), CMPDL.getAPI().getAddonFiles(addon.getId()));
         task.setOnSucceeded(e -> files = task.getValue().orElse(null));
         if (files != null) {
             files.sort(Comparator.comparing(AddonFile::getFileDate).reversed());
@@ -127,10 +127,10 @@ public class FilePaneController implements Initializable, IContentController {
 
     @Override
     public void handleNext() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Loading file data...", ButtonType.CLOSE);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Carregando informações do arquivo...", ButtonType.CLOSE);
         alert.show();
         int fileId = file.getSelectedToggle() == directButton ? filesListView.getSelectionModel().getSelectedItem().getId() : Integer.parseInt(idField.getText());
-        CallTask<AddonFile> task = new CallTask<>(String.format("Getting project file %d:%d", addon.getId(), fileId), CMPDL.getAPI().getFile(addon.getId(), fileId));
+        CallTask<AddonFile> task = new CallTask<>(String.format("Obtendo arquivo de projeto %d:%d", addon.getId(), fileId), CMPDL.getAPI().getFile(addon.getId(), fileId));
         task.setOnSucceeded(e -> Platform.runLater(() -> task.getValue().ifPresent(file -> {
             CMPDL.destinationPane.getController().setAddonAndFile(addon, file);
             CMPDL.mainWindow.getController().setContent(CMPDL.destinationPane);

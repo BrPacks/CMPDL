@@ -33,7 +33,7 @@ public class AddonFileMinimalView extends ListCell<AddonFile> {
             setGraphic(null);
         } else {
             fileName.setText(item.getDisplayName());
-            gameVersion.setText("for MC " + String.join(", ", item.getGameVersion()));
+            gameVersion.setText("Para MC " + String.join(", ", item.getGameVersion()));
             fileType.setText(item.getReleaseType().toString());
             fileType.setBackground(new Background(new BackgroundFill(item.getReleaseType().getColor(), new CornerRadii(5), new Insets(-2, -5, -2, -5))));
             fileType.setTextFill(Color.WHITE);

@@ -20,7 +20,7 @@ public class CleanTask extends TaskBase<Void> {
 
     @Override
     protected Void call0() throws Throwable {
-        updateTitle("Cleaning");
+        updateTitle("Limpando");
         Files.walkFileTree(temp.toPath(), new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
